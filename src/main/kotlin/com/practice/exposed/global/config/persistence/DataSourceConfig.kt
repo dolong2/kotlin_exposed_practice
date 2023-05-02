@@ -1,4 +1,4 @@
-package com.practice.exposed.global.config
+package com.practice.exposed.global.config.persistence
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
