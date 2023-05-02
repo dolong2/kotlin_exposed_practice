@@ -6,5 +6,5 @@ import kotlin.reflect.KClass
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION)
 annotation class ExposedTransaction(
-    val target: KClass<out Table>,
+    val target: Array<KClass<out Table>>,
 )
