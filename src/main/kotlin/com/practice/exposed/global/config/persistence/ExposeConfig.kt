@@ -1,4 +1,4 @@
-package com.practice.exposed.global.config
+package com.practice.exposed.global.config.persistence
 
 import org.jetbrains.exposed.spring.SpringTransactionManager
 import org.springframework.context.annotation.Bean

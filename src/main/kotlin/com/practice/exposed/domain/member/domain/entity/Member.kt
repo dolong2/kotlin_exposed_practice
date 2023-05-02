@@ -9,12 +9,11 @@ import org.jetbrains.exposed.dao.id.EntityID
 class Member(id: EntityID<Long>) : LongEntity(id) {
     companion object : LongEntityClass<Member>(MemberTable)
     var name by MemberTable.name
-    private set
+        private set
     var email by MemberTable.email
-    private set
+        private set
     var password by MemberTable.password
-    private set
-
+        private set
     fun signup(request: SignupRequest){
         name = request.name
         email = request.email
