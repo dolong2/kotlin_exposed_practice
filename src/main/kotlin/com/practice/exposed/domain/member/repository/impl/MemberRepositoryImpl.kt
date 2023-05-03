@@ -19,5 +19,9 @@ class MemberRepositoryImpl : MemberRepository {
         return Member.new { signup(signupRequest) }
     }
 
+    @ExposedTransaction(target = [MemberTable::class])
+    override fun existsByEmail(email: String): Boolean =
+        !Member.find { MemberTable.email.eq(email) }.empty()
+
 
 }
