@@ -16,6 +16,9 @@ enum class ErrorCode(
     //404
     NOT_FOUND(404, "리소스를 찾을 수 없음"),
 
+    //409
+    DUPLICATE_MEMBER(409, "이미 해당 유저가 존재함"),
+
     //500
     INTERNAL_ERROR(500, "알 수 없는 에러")
 }
