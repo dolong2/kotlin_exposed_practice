@@ -39,6 +39,7 @@ class SecurityConfig(
             }).permitAll()
 
             .requestMatchers(HttpMethod.POST, "/auth").permitAll()
+            .requestMatchers(HttpMethod.POST, "/auth/signup").permitAll()
             .requestMatchers(HttpMethod.PATCH, "/auth").permitAll()
             .requestMatchers(HttpMethod.DELETE, "/auth").authenticated()
 

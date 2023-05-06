@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 class AuthController(
     private val signupService: SignupService
 ) {
-    @PostMapping
+    @PostMapping("/signup")
     fun createMember(@RequestBody signupRequest: SignupRequest): ResponseEntity<Void> {
         signupService.execute(signupRequest)
         return ResponseEntity(HttpStatus.CREATED)
