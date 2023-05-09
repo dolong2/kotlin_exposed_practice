@@ -6,6 +6,7 @@ enum class ErrorCode(
 ) {
     //400
     BAD_REQUEST(400, "올바르지 않은 요청"),
+    MISMATCH_PASSWORD(400, "올바르지 않은 패스워드"),
 
     //401
     UNAUTHORIZED(401, "권한이 없음"),
