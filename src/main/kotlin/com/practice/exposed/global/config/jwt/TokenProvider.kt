@@ -37,11 +37,11 @@ class TokenProvider(
     val refreshExpiredTime: ZonedDateTime
         get() = ZonedDateTime.now().plusSeconds(tokenTimeProperties.refreshTime)
 
-    fun generateAccessToken(email: String, role: RoleEnum): String =
-        generateToken(email, ACCESS_TYPE, jwtProperty.accessSecret, tokenTimeProperties.accessTime, role)
+    fun generateAccessToken(email: String, roles: List<RoleEnum>): String =
+        generateToken(email, ACCESS_TYPE, jwtProperty.accessSecret, tokenTimeProperties.accessTime, roles)
 
-    fun generateRefreshToken(email: String, role: RoleEnum): String =
-        generateToken(email, REFRESH_TYPE, jwtProperty.refreshSecret, tokenTimeProperties.refreshTime, role)
+    fun generateRefreshToken(email: String, roles: List<RoleEnum>): String =
+        generateToken(email, REFRESH_TYPE, jwtProperty.refreshSecret, tokenTimeProperties.refreshTime, roles)
 
     fun resolveToken(req: HttpServletRequest): String? {
         val token = req.getHeader("Authorization") ?: return null
@@ -72,10 +72,10 @@ class TokenProvider(
     fun parseToken(token: String): String? =
         if (token.startsWith(TOKEN_PREFIX)) token.replace(TOKEN_PREFIX, "") else null
 
-    fun generateToken(email: String, type: String, secret: Key, exp: Long, role: RoleEnum): String {
+    private fun generateToken(email: String, type: String, secret: Key, exp: Long, roles: List<RoleEnum>): String {
         val claims = Jwts.claims().setSubject(email)
         claims["type"] = type
-        claims[AUTHORITY] = role
+        claims[AUTHORITY] = roles
         return Jwts.builder()
             .setHeaderParam("typ", "JWT")
             .signWith(secret, SignatureAlgorithm.HS256)
