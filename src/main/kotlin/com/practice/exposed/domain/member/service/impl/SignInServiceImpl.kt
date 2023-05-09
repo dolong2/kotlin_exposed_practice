@@ -1,5 +1,6 @@
 package com.practice.exposed.domain.member.service.impl
 
+import com.practice.exposed.domain.member.exception.MemberNotFoundException
 import com.practice.exposed.domain.member.persenation.request.SignInRequest
 import com.practice.exposed.domain.member.persenation.response.SignInResponse
 import com.practice.exposed.domain.member.repository.MemberRepository
@@ -16,7 +17,7 @@ class SignInServiceImpl(
 ) : SignInService{
     override fun execute(signInRequest: SignInRequest): SignInResponse {
         val member = (memberRepository.findByEmail(signInRequest.email)
-            ?: throw RuntimeException())
+            ?: throw MemberNotFoundException())
         val roles = roleRepository.findByMember(member)
         val accessToken = tokenProvider.generateAccessToken(member.email, roles.map { it.role })
         val refreshToken = tokenProvider.generateRefreshToken(member.email, roles.map { it.role })
