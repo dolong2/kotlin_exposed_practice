@@ -11,5 +11,5 @@ class RefreshToken(
     @Indexed
     val token: String,
     @Indexed
-    val userId: Long,
+    val userEmail: String,
 )

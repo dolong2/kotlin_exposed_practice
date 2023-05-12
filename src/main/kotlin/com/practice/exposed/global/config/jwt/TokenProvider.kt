@@ -52,12 +52,8 @@ class TokenProvider(
         return getTokenSubject(refresh, jwtProperty.refreshSecret)
     }
 
-    fun exactRoleFromRefreshToken(refresh: String): RoleEnum {
-        return when (getTokenBody(refresh, jwtProperty.refreshSecret).get(AUTHORITY, String::class.java)) {
-            "ROLE_STUDENT" -> RoleEnum.ROLE_MEMBER
-            "ROLE_ADMIN" -> RoleEnum.ROLE_ADMIN
-            else -> throw RuntimeException()
-        }
+    fun exactRoleFromRefreshToken(refresh: String): List<RoleEnum> {
+        return getTokenBody(refresh, jwtProperty.refreshSecret).get(AUTHORITY, List::class.java) as List<RoleEnum>
 
     }
 

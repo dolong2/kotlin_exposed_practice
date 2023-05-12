@@ -29,7 +29,7 @@ class SignInServiceImpl(
         val roles = roleRepository.findByMember(member)
         val accessToken = tokenProvider.generateAccessToken(member.email, roles.map { it.role })
         val refreshToken = tokenProvider.generateRefreshToken(member.email, roles.map { it.role })
-        refreshTokenRepository.save(RefreshToken(userId = member.id.value, token = refreshToken))
+        refreshTokenRepository.save(RefreshToken(userEmail = member.email, token = refreshToken))
         return SignInResponse(accessToken = accessToken, refreshToken = refreshToken, accessExpires = tokenProvider.accessExpiredTime)
     }
 }
