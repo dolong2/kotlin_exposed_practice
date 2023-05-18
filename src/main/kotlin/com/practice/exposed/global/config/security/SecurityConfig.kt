@@ -43,6 +43,9 @@ class SecurityConfig(
             .requestMatchers(HttpMethod.PATCH, "/auth").permitAll()
             .requestMatchers(HttpMethod.DELETE, "/auth").authenticated()
 
+            .requestMatchers(HttpMethod.POST, "/postings").authenticated()
+            .requestMatchers(HttpMethod.POST, "/postings/one").authenticated()
+
             .anyRequest().denyAll()
             .and()
             .exceptionHandling()
