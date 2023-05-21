@@ -7,4 +7,8 @@ interface PostingRepository {
     fun save(postingDao: PostingDao): Posting
 
     fun saveAll(postingDao: List<PostingDao>)
+
+    fun findById(id: Long): Posting?
+
+    fun delete(id: Long)
 }

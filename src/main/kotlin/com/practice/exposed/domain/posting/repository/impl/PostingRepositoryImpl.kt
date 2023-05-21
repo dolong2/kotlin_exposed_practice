@@ -5,7 +5,9 @@ import com.practice.exposed.domain.posting.domain.persistence.PostingTable
 import com.practice.exposed.domain.posting.repository.PostingRepository
 import com.practice.exposed.domain.posting.repository.dao.PostingDao
 import com.practice.exposed.global.annotation.exposed.ExposedTransaction
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.batchInsert
+import org.jetbrains.exposed.sql.deleteWhere
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -28,6 +30,15 @@ class PostingRepositoryImpl : PostingRepository {
             this[PostingTable.lastModifiedDate] = it.updatedDate
             this[PostingTable.writer] = it.writer.id
         }
+    }
+
+    @ExposedTransaction(target = [PostingTable::class])
+    override fun findById(id: Long): Posting? =
+        Posting.find { PostingTable.id.eq(id) }.firstOrNull()
+
+    @ExposedTransaction(target = [PostingTable::class])
+    override fun delete(id: Long) {
+        PostingTable.deleteWhere { this.id.eq(id) }
     }
 
 }
