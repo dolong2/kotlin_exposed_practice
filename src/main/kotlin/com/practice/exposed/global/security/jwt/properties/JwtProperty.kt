@@ -1,4 +1,4 @@
-package com.practice.exposed.global.config.jwt.properties
+package com.practice.exposed.global.security.jwt.properties
 
 import io.jsonwebtoken.security.Keys
 import org.springframework.boot.context.properties.ConfigurationProperties

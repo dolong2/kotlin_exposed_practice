@@ -9,7 +9,7 @@ import com.practice.exposed.domain.member.repository.MemberRepository
 import com.practice.exposed.domain.member.repository.RefreshTokenRepository
 import com.practice.exposed.domain.member.repository.RoleRepository
 import com.practice.exposed.domain.member.service.SignInService
-import com.practice.exposed.global.config.jwt.TokenProvider
+import com.practice.exposed.global.security.jwt.TokenProvider
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 

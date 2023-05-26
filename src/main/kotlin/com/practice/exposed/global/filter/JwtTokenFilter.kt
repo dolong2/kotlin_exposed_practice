@@ -1,6 +1,6 @@
 package com.practice.exposed.global.filter
 
-import com.practice.exposed.global.config.jwt.TokenProvider
+import com.practice.exposed.global.security.jwt.TokenProvider
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

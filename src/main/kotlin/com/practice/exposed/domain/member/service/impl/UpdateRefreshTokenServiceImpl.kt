@@ -6,8 +6,8 @@ import com.practice.exposed.domain.member.persenation.response.RefreshResponse
 import com.practice.exposed.domain.member.repository.MemberRepository
 import com.practice.exposed.domain.member.repository.RefreshTokenRepository
 import com.practice.exposed.domain.member.service.UpdateRefreshTokenService
-import com.practice.exposed.global.config.jwt.TokenProvider
-import com.practice.exposed.global.config.jwt.exception.InvalidTokenException
+import com.practice.exposed.global.security.jwt.TokenProvider
+import com.practice.exposed.global.security.jwt.exception.InvalidTokenException
 import org.springframework.stereotype.Service
 
 @Service

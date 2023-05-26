@@ -1,10 +1,10 @@
-package com.practice.exposed.global.config.jwt
+package com.practice.exposed.global.security.jwt
 
 import com.practice.exposed.domain.member.enums.RoleEnum
-import com.practice.exposed.global.config.jwt.exception.ExpiredTokenException
-import com.practice.exposed.global.config.jwt.exception.InvalidTokenException
-import com.practice.exposed.global.config.jwt.properties.JwtProperty
-import com.practice.exposed.global.config.jwt.properties.TokenTimeProperties
+import com.practice.exposed.global.security.jwt.exception.ExpiredTokenException
+import com.practice.exposed.global.security.jwt.exception.InvalidTokenException
+import com.practice.exposed.global.security.jwt.properties.JwtProperty
+import com.practice.exposed.global.security.jwt.properties.TokenTimeProperties
 import com.practice.exposed.global.security.auth.AuthDetailsService
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException

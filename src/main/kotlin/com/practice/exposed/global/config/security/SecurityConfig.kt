@@ -2,7 +2,7 @@ package com.practice.exposed.global.config.security
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.practice.exposed.global.config.filter.FilterConfig
-import com.practice.exposed.global.config.jwt.TokenProvider
+import com.practice.exposed.global.security.jwt.TokenProvider
 import com.practice.exposed.global.security.CustomAuthenticationEntryPoint
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

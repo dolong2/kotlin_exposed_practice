@@ -1,4 +1,4 @@
-package com.practice.exposed.global.config.jwt.exception
+package com.practice.exposed.global.security.jwt.exception
 
 import com.practice.exposed.global.exception.BasicException
 import com.practice.exposed.global.exception.ErrorCode
