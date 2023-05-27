@@ -14,17 +14,13 @@ import org.springframework.stereotype.Component
 class ExposedTransactionProcessor {
     @Around("@annotation(exposedTransaction)")
     fun applyTransaction(joinPoint: ProceedingJoinPoint, exposedTransaction: ExposedTransaction): Any?{
-        var proceed: Any? = null
         val target = exposedTransaction.target
-        target.forEach {
-            transaction {
+        transaction {
+            target.forEach {
                 SchemaUtils.create(it.objectInstance!!)
             }
-        }
-        transaction {
             addLogger(StdOutSqlLogger)
-            proceed = joinPoint.proceed()
         }
-        return proceed
+        return joinPoint.proceed()
     }
 }
