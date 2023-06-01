@@ -46,6 +46,7 @@ class SecurityConfig(
             .requestMatchers(HttpMethod.POST, "/postings").authenticated()
             .requestMatchers(HttpMethod.POST, "/postings/one").authenticated()
             .requestMatchers(HttpMethod.DELETE, "/postings/{id}").authenticated()
+            .requestMatchers(HttpMethod.GET, "/postings").permitAll()
 
             .anyRequest().denyAll()
             .and()

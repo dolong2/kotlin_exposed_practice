@@ -8,6 +8,7 @@ import com.practice.exposed.global.annotation.exposed.ExposedTransaction
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.batchInsert
 import org.jetbrains.exposed.sql.deleteWhere
+import org.jetbrains.exposed.sql.selectAll
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -40,5 +41,9 @@ class PostingRepositoryImpl : PostingRepository {
     override fun delete(id: Long) {
         PostingTable.deleteWhere { this.id.eq(id) }
     }
+
+    @ExposedTransaction(target = [PostingTable::class])
+    override fun findAll(): List<Posting> =
+        Posting.all().toList()
 
 }

@@ -11,4 +11,6 @@ interface PostingRepository {
     fun findById(id: Long): Posting?
 
     fun delete(id: Long)
+
+    fun findAll(): List<Posting>
 }
