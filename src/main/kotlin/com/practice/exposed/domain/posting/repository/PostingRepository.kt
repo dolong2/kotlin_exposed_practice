@@ -13,4 +13,6 @@ interface PostingRepository {
     fun delete(id: Long)
 
     fun findAll(): List<Posting>
+
+    fun update(id: Long, postingDao: PostingDao): Posting
 }

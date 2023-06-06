@@ -47,4 +47,11 @@ class PostingRepositoryImpl : PostingRepository {
     override fun findAll(): List<Posting> =
         Posting.all().toList()
 
+    @ExposedTransaction(target = [PostingTable::class])
+    override fun update(id: Long, postingDao: PostingDao): Posting {
+        val posting = (Posting.findById(id)
+            ?: throw PostingNotFoundException())
+        posting.save(postingDao)
+        return posting
+    }
 }
