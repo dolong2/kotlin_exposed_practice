@@ -1,6 +1,7 @@
 package com.practice.exposed.domain.posting.service.impl
 
 import com.practice.exposed.domain.member.domain.entity.Member
+import com.practice.exposed.domain.posting.exception.NotEqualWriterException
 import com.practice.exposed.domain.posting.exception.PostingNotFoundException
 import com.practice.exposed.domain.posting.presentation.request.UpdatePostingRequest
 import com.practice.exposed.domain.posting.repository.PostingRepository
@@ -20,7 +21,7 @@ class UpdatePostingServiceImpl(
             ?: throw PostingNotFoundException())
         val currentUser = userUtil.fetchCurrentUser()
         if (posting.writer != currentUser.id)
-            throw RuntimeException() // TODO 작성자가 같지 않음
+            throw NotEqualWriterException()
         val postingDao = updatePostingRequest.toPostingDao(writer = currentUser, createdDate = posting.createdDate)
         postingRepository.update(id, postingDao)
     }
