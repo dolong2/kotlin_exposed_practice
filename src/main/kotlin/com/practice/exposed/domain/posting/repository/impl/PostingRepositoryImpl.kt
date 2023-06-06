@@ -2,6 +2,7 @@ package com.practice.exposed.domain.posting.repository.impl
 
 import com.practice.exposed.domain.posting.domain.entity.Posting
 import com.practice.exposed.domain.posting.domain.persistence.PostingTable
+import com.practice.exposed.domain.posting.exception.PostingNotFoundException
 import com.practice.exposed.domain.posting.repository.PostingRepository
 import com.practice.exposed.domain.posting.repository.dao.PostingDao
 import com.practice.exposed.global.annotation.exposed.ExposedTransaction
@@ -35,7 +36,7 @@ class PostingRepositoryImpl : PostingRepository {
 
     @ExposedTransaction(target = [PostingTable::class])
     override fun findById(id: Long): Posting? =
-        Posting.find { PostingTable.id.eq(id) }.firstOrNull()
+        Posting.findById(id)
 
     @ExposedTransaction(target = [PostingTable::class])
     override fun delete(id: Long) {
