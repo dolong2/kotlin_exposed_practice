@@ -52,10 +52,10 @@ class TokenProvider(
         return getTokenSubject(refresh, jwtProperty.refreshSecret)
     }
 
-    fun exactRoleFromRefreshToken(refresh: String): List<RoleEnum> {
-        return getTokenBody(refresh, jwtProperty.refreshSecret).get(AUTHORITY, List::class.java) as List<RoleEnum>
-
-    }
+    fun exactRoleFromRefreshToken(refresh: String): List<RoleEnum> =
+        getTokenBody(refresh, jwtProperty.refreshSecret)
+            .get(AUTHORITY, List::class.java)
+            .map { it as RoleEnum }
 
     fun exactTypeFromRefreshToken(refresh: String): String =
         getTokenSubject(refresh, jwtProperty.refreshSecret)
