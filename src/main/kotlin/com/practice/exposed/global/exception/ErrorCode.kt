@@ -13,7 +13,9 @@ enum class ErrorCode(
     EXPIRED_TOKEN(401, "토큰이 만료됨"),
 
     //403
-    NOT_SAME_WRITER(403, "작성자가 아님"),
+    FORBIDDEN(403, "요청이 금지됨"),
+    NOT_UPDATE_POSTING(403, "게시물을 수정할 수 없음"),
+    NOT_DELETE_POSTING(403, "게시물을 삭제할 수 없음"),
 
     //404
     NOT_FOUND(404, "리소스를 찾을 수 없음"),

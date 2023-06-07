@@ -2,7 +2,7 @@ package com.practice.exposed.domain.posting.service.impl
 
 import com.practice.exposed.domain.member.domain.entity.Member
 import com.practice.exposed.domain.posting.domain.entity.Posting
-import com.practice.exposed.domain.posting.exception.NotEqualWriterException
+import com.practice.exposed.domain.posting.exception.NotDeletePostingException
 import com.practice.exposed.domain.posting.exception.PostingNotFoundException
 import com.practice.exposed.domain.posting.repository.PostingRepository
 import com.practice.exposed.domain.posting.service.DeletePostingService
@@ -19,7 +19,7 @@ class DeletePostingServiceImpl(
         val posting = (postingRepository.findById(id)
             ?: throw PostingNotFoundException())
         if (isNotWriter(member, posting))
-            throw NotEqualWriterException()
+            throw NotDeletePostingException()
         postingRepository.delete(id)
     }
 
